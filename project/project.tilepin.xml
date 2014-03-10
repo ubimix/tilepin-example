@@ -9,6 +9,8 @@
   <Parameter name="name"><![CDATA[TilePin Example]]></Parameter>
   <Parameter name="description"><![CDATA[An example project for TilePin]]></Parameter>
   <Parameter name="format">png</Parameter>
+  <Parameter name="interactivity_layer">country-shapes-110m</Parameter>
+  <Parameter name="interactivity_fields">TYPE,ADMIN,ADM0_A3,NAME,ABBREV,POSTAL</Parameter>
   <Parameter name="maxzoom">19</Parameter>
   <Parameter name="minzoom">0</Parameter>
 </Parameters>

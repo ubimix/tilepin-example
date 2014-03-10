@@ -11,6 +11,8 @@
 <!-- JavaScript libraries -->
 <script type="text/javascript" src="./libs/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="./libs/leaflet/leaflet.js"></script>
+<script type="text/javascript"
+	src="./libs/leaflet.utfgrid/leaflet.utfgrid.js"></script>
 
 <!-- Specific CSS styles -->
 <style type="text/css">
@@ -29,13 +31,38 @@ html,body {
 	bottom: 0px;
 	right: 0px;
 }
+
+#info {
+	background-color: white;
+	border: 1px solid silver;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 200px;
+	padding: 1em;
+	position: absolute;
+}
+
+p,h3 {
+	margin: 0.5em 0;
+}
 </style>
 
 <script type="text/javascript" src="./index.js"></script>
 
 </head>
 <body>
-	
 	<div id="map"></div>
+	<div id="info" style="display: none;">
+		<h3>
+			<span class="name"></span> (<span class="abbrev"></span>)
+		</h3>
+		<p>
+			Type: <span class="type"></span>
+		</p>
+		<p>
+			Post Code: <span class="postcode"></span>
+		</p>
+	</div>
 </body>
 </html>
