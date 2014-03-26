@@ -19,6 +19,9 @@
     "dependencies" : {
         "underscore" : "*",
         "express" : "*",
+        "mapnik" : "~1.4.0",
+        "q" : "*",
+        "sphericalmercator": "~1.0.2",
         "tilepin" : "git://github.com/ubimix/tilepin.git"
     },
     "scripts" : {
