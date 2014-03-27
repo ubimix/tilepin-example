@@ -52,16 +52,27 @@ p,h3 {
 
 </head>
 <body>
-	<div id="map"></div>
+
+	<div id="map" data-center="[35.460669951495305, -29.8828125]"
+		data-zoom="2" data-min-zoom="1" data-max-zoom="18"
+		data-tiles-url="/tiles/project/{z}/{x}/{y}.png"
+		data-utfgrid-url="/tiles/project/{z}/{x}/{y}.grid.json?callback={cb}">
+		<div class="attribution">
+			Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a>
+			contributors
+		</div>
+	</div>
+
 	<div id="info" style="display: none;">
 		<h3>
-			<span class="name"></span> (<span class="abbrev"></span>)
+			<span class="name" data-placeholder="ADMIN"></span> (<span
+				class="abbrev" data-placeholder="ABBREV"></span>)
 		</h3>
 		<p>
-			Type: <span class="type"></span>
+			Type: <span class="type" data-placeholder="TYPE"></span>
 		</p>
 		<p>
-			Post Code: <span class="postcode"></span>
+			Post Code: <span class="postcode" data-placeholder="POSTAL"></span>
 		</p>
 	</div>
 </body>

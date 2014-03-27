@@ -1,31 +1,54 @@
 (function(context) {
     $(function() {
-        var tilesUrl = '/tiles/project/{z}/{x}/{y}.png';
-        var utfgridUrl = '/tiles/project/{z}/{x}/{y}.grid.json?callback={cb}';
-        var center = [ 48.857487002645485, 2.3455810546875 ];
-        var zoom = 2;
-        var attribution = 'Map data &copy; '
-                + '<a href="http://openstreetmap.org">OpenStreetMap</a> contributors';
+        var mapElement = $('#map');
+        var tilesUrl = mapElement.data('tiles-url');
+        var utfgridUrl = mapElement.data('utfgrid-url');
+        var attributionElm = mapElement.find('.attribution');
+        var attribution = attributionElm.html();
+        mapElement.html('');
+        var center = mapElement.data('center');
+        var zoom = mapElement.data('zoom');
+        var minZoom = mapElement.data('min-zoom') || 2;
+        var maxZoom = mapElement.data('max-zoom') || 18;
 
-        var map = L.map('map').setView(center, zoom);
+        console.log('tilesUrl:', tilesUrl);
+        console.log('utfgridUrl:', utfgridUrl);
+        console.log('center:', center);
+        console.log('minZoom:', minZoom);
+        console.log('maxZoom:', maxZoom);
+        console.log('zoom:', zoom);
+
+        var map = L.map(mapElement[0]).setView(center, zoom);
         var tiles = L.tileLayer(tilesUrl, {
             attribution : attribution,
-            maxZoom : 6
+            minZoom : minZoom,
+            maxZoom : maxZoom,
         });
         map.addLayer(tiles);
 
-        var utfGrid = new L.UtfGrid(utfgridUrl);
-        map.addLayer(utfGrid);
-        utfGrid.on('mouseover', function(ev) {
-            showInfo(ev.data);
+        if (utfgridUrl) {
+            var utfGrid = new L.UtfGrid(utfgridUrl);
+            map.addLayer(utfGrid);
+            utfGrid.on('mouseover', function(ev) {
+                showInfo(ev.data);
+            })
+        }
+
+        map.on('click', function(e) {
+            console.log(map.getZoom() + ' [' + e.latlng.lng + ','
+                    + e.latlng.lat + ']');
         })
+
     });
     function showInfo(data) {
         var panel = $('#info');
-        panel.find('.name').text(data.ADMIN);
-        panel.find('.abbrev').text(data.ABBREV);
-        panel.find('.type').text(data.TYPE);
-        panel.find('.postcode').text(data.POSTAL);
+        console.log(panel[0])
+        panel.find('[data-placeholder]').each(function() {
+            var elm = $(this);
+            var field = elm.data('placeholder');
+            console.log(field, data[field]);
+            elm.text(data[field]);
+        })
         panel.show();
     }
 
