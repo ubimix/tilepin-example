@@ -10,7 +10,7 @@
     } ],
     "repository" : {
         "type" : "git",
-        "url" : "http://github.com/tilepin/tilepin.git"
+        "url" : "http://github.com/tilepin/tilepin-example.git"
     },
     "contributors" : [ {
         "name" : "Mikhail Kotelnikov",
