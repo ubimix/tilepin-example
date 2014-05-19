@@ -35,10 +35,6 @@ function readVectorTile(data) {
     });
 }
 
-function renderVectorTile() {
-
-}
-
 function renderVectorTileToImage(map, vtile, enc) {
     var image = new mapnik.Image(vtile.height(), vtile.width());
     return Q.ninvoke(vtile, 'render', map, image).then(function(image) {
@@ -135,6 +131,24 @@ Q().then(function() {
         vectorTile = tile;
         return vectorTile;
     });
+})
+
+// Render to a SVG
+.then(function() {
+    var format = 'pdf';
+    var options = _.extend({}, mapOptions, {
+        width : 800,
+        height : 500
+    });
+    return prepareMap(options).then(function(map) {
+        map.zoomAll();
+        console.log(map);
+        var path = './map-full.' + format;
+        return Q.ninvoke(map, 'renderFile', path, {
+            format : format,
+            scale : 1.0
+        });
+    })
 })
 
 // Render vector tiles in PNG

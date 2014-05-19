@@ -1,0 +1,11 @@
+{
+    "port" : 9898,
+    "db" : {
+        "*" : {
+            "description": "This is a common properties for all layers"
+        },
+        "project" : {
+            "description": "This is a specific property for the 'project' layer"
+        }
+    }
+}
