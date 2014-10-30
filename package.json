@@ -22,7 +22,7 @@
         "mapnik" : "~1.4.0",
         "q" : "*",
         "sphericalmercator": "~1.0.2",
-        "tilepin" : "git://github.com/ubimix/tilepin.git#v0.1.0"
+        "tilepin" : "git://github.com/ubimix/tilepin.git#master"
     },
     "scripts" : {
         "start" : "node ./node_modules/tilepin/tilepin-server.js"
